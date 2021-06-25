@@ -13,3 +13,5 @@ La aplicación funciona de la siguiente manera, el usuario en la página princip
 Una vez registrado o habiendo iniciado sesión al usuario se le redirige a la página de login sin la opción de llenar el formulario pues ya no tiene caso, en cambio en la esquina izquierda superior se le muestra una opción para hacer gestión de usuarios.
 En la parte de gestión de usuarios, tiene la opción de editar o eliminar los usuarios ya registrados, además de contar con un filtro en la parte superior que busca personas por sexo o por nombre.
 Cualquier persona que se registre o inicie sesión puede hacer uso de la gestión de usuarios.
+
+El proyecto está compuesto por 3 carpetas principales, Project que es donde se encuentras las "views" para inicio de sesión y registro de usuario además de los servicios para envio de correo electrónico, users, que es donde se encuentra el modelo para los usuarios y users_crud, en esta se encuentras las funciones para editar, listar y buscar usuarios. 
