@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="col">
+    <h2>Editar usuario</h2>
+    <!--Formulario-->
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {{form}}  
+        <button type="subtmit" class="btn btn-primary">Editar</button>
+    </form>
+</div>
+{% endblock %}

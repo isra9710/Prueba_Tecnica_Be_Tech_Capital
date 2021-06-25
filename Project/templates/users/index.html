@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="col">
+<form action="{% url 'users_crud:search' %}">
+    <div class="input-group">
+        <input type="text" name="q" value="{{ query }}" class="form-control" placeholder="Filtrar por primer nombre o sexo">
+        <div class="input-group-append">
+            <input type="submit" name="" value="Buscar" class="btn btn-primary">
+        </div>
+    </div>
+</form>
+            <h4 class="text-center aler alert-info">Usuarios Registrados</h4>
+            <table class="table table-hover">
+                <thead>  
+                <tr>
+                    <th>ID</th>
+                    <th scope="col">Nombre </th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">Teléfono</th>
+                    <th scope="col">Sexo</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Foto</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for user in user_list %}
+                    <tr>
+                        <td>{{user.id}}</td>
+                        <td>{{user.first_name}}</td>
+                        <td>{{user.last_name}}</td>
+                        <td>{{user.phone}}</td>
+                        <td>{{user.sex}}</td>
+                        <td>{{user.email}}</td>
+                        {% if user.profile_picture%}
+                        <td><img class="profile-pic" src="{{user.profile_picture.url}}" height="100"></td>
+                        {%else%}
+                        <td></td>
+                        {% endif %}
+
+                        <td>
+                            <a href="{% url 'users_crud:update' user.id %}" class="btn
+                            btn-warning btn-sm"><i class="fas fa-edit"></i></a>
+                            <form action="{% url 'users_crud:delete' user.id %}"
+                                  method="POST" class="d-inline">
+                                  {% csrf_token %}
+                                    <input type="submit" onclick="return confirm('¿Seguro que desea eliminar usuario?');" class="btn btn-danger btn-sm" value="X">
+                            </form>
+                        </td>
+
+                    </tr>
+               {% endfor %}
+                </tbody>
+            </table> 
+</div>
+
+    {% endblock %}
